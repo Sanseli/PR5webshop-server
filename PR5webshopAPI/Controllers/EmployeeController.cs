@@ -55,7 +55,7 @@ namespace PR5webshopAPI.Controllers
             var vOldEmployee = _context.Employees.Find(id);
 
             vOldEmployee.Name = value.Name;
-            vOldEmployee.Function = value.Function;
+            vOldEmployee.Position = value.Position;
             vOldEmployee.ImgUrl = value.ImgUrl;
 
             _context.SaveChangesAsync();
