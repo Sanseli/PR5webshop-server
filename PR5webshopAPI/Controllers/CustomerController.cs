@@ -33,6 +33,13 @@ namespace PR5webshopAPI.Controllers
             return _context.Customers.Find(id);
         }
 
+        // GET api/<controller>/email
+        [HttpGet("{email}")]
+        public Customer Get(string email)
+        {
+            return _context.Customers.Find(email);
+        }
+
         // POST api/<controller>
         [HttpPost]
         public ActionResult<Customer> PostCustomer([FromBody]Customer value)

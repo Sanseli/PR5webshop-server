@@ -25,7 +25,7 @@ namespace PR5webshopAPI.Data
             modelBuilder.Entity<Employee>().ToTable("Employees");
             modelBuilder.Entity<Category>().ToTable("Categories");
             modelBuilder.Entity<Customer>().ToTable("Customers");
-            modelBuilder.Entity<Order>().ToTable("Orders");
+            modelBuilder.Entity<Order>().ToTable("Orders").Property(o => o.Total).HasColumnType("decimal(18, 2)");
             modelBuilder.Entity<Product>().ToTable("Products").Property(p => p.Price).HasColumnType("decimal(18, 2)");
         }
     }

@@ -11,10 +11,14 @@ namespace PR5webshopAPI.Models
         [Key]
         public int ID { get; set; }
 
-        public DateTime Orderdate { get; set; }
+        public string Orderdate { get; set; }
 
         public int CustomerID { get; set; }
 
-       public int ProductID { get; set; }
+        public int ProductID { get; set; }
+
+        public int Amount { get; set; }
+
+        public double Total { get; set; }
     }
 }
