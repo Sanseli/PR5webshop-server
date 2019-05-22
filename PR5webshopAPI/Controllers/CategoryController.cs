@@ -55,6 +55,7 @@ namespace PR5webshopAPI.Controllers
             var vOldCategory = _context.Categories.Find(id);
 
             vOldCategory.Name = value.Name;
+            vOldCategory.ImgUrl = value.ImgUrl;
 
             _context.SaveChangesAsync();
 
