@@ -7,7 +7,7 @@ namespace PR5webshopAPI.Models
 {
     public class User
     {
-        public int UserID { get; set; }
+        public int Id { get; set; }
 
         public string Username { get; set; }
         public string Password { get; set; }

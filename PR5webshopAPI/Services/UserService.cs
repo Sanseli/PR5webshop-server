@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using PR5webshopAPI.Data;
 using PR5webshopAPI.Helpers;
 using PR5webshopAPI.Models;
 using System;
@@ -14,20 +15,22 @@ namespace PR5webshopAPI.Services
 {
     public interface IUserService
     {
-        User Authenticate(string username, string password);
+        User Authenticate(int userid, string username, string password);
     }
     public class UserService : IUserService
     {
         private readonly AppSettings _appSettings;
+        
 
         public UserService(IOptions<AppSettings> appSettings)
         {
             _appSettings = appSettings.Value;
         }
 
-        public User Authenticate(string username, string password)
+        public User Authenticate(int userid, string username, string password)
         {
-            var user = new User() { UserID = 1, Username = "Lisa.Sansen", Password = "123" };
+            //else return null;
+            var user = new User() { Username = username, Password = password };
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
@@ -36,7 +39,7 @@ namespace PR5webshopAPI.Services
             {
                 Subject = new ClaimsIdentity(new Claim[]
                 {
-                    new Claim(ClaimTypes.Name, user.UserID.ToString())
+                    new Claim(ClaimTypes.Name, user.Id.ToString())
                 }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
